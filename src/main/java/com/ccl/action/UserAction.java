@@ -3,11 +3,9 @@ package com.ccl.action;
 import com.ccl.bean.User;
 import com.ccl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 
 /**
  * Created by ccl on 16/8/10.
@@ -18,7 +16,8 @@ public class UserAction {
     private UserService userService;
     @GET
     @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=" + "UTF-8")
+    @Consumes({ "application/json;charset=utf-8" })
     public User getGreeting(@PathParam("id") Integer id) throws Exception {
         return userService.queryById(id);
     }
