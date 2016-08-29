@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="js/jquery-3.1.0.min.js"/>
+    <script>
+        $(document).ready(function(){
+            jQuery.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: 'http://10.200.6.123:7080/rest/',
+                dataType: 'json',
+                success: function(data){
+                    if (data && data.status == "0") {
+                        $.each(data.data, function(i, item){
+                            $('#info').append("姓名：" + item.name +"，年龄：" +item.age);
+                        });
+                    }
+                },
+                error: function(){
+                    alert("error")
+                }
+            });
+            $("#submit").click(function(){
+                var jsonuserinfo = $.toJSON($('#form').serializeObject());
+                jQuery.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    url: 'add.do',
+                    data: jsonuserinfo,
+                    dataType: 'json',
+                    success: function(data){
+                        alert("新增成功！");
+                    },
+                    error: function(){
+                        alert("error")
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="info">
+
+</div>
+</body>
+</html>
