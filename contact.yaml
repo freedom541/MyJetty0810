@@ -1,0 +1,12 @@
+- !!com.ccl.snakeyaml.Contact
+  age: 1
+  name: test1
+  phoneNumbers:
+  - !!com.ccl.snakeyaml.Phone {name: home, number: '1111'}
+  - !!com.ccl.snakeyaml.Phone {name: work, number: '2222'}
+- !!com.ccl.snakeyaml.Contact
+  age: 23
+  name: test2
+  phoneNumbers:
+  - !!com.ccl.snakeyaml.Phone {name: home, number: '1234'}
+  - !!com.ccl.snakeyaml.Phone {name: work, number: '4321'}
